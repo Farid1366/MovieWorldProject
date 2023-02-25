@@ -22,5 +22,6 @@ namespace Model.Models
         [Column(TypeName = "decimal(3, 1)")]
         [Required]
         public decimal? IMDB_Rate { get; set; }
+        public virtual List<MovieGenre> MovieGenres { get; set; } = new List<MovieGenre>();
     }
 }
