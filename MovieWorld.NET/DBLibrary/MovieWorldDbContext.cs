@@ -9,6 +9,9 @@ namespace DBLibrary
     {
         private static IConfigurationRoot? _configuration = null;
         public DbSet<Movie> Movie { get; set; }
+        public DbSet<Cast> Cast { get; set; }
+        public DbSet<CastType> CastType { get; set; }
+        public DbSet<Gender> Gender { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

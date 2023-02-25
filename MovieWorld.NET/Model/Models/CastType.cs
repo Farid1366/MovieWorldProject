@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Model.Models
 {
-    public class Genre : FullAuditModel
+    public class CastType : FullAuditModel
     {
         [Required]
-        [StringLength(ModelConstants.MAX_GENRENAME_LENGTH)]
+        [StringLength(ModelConstants.MAX_CASTTYPE_NAME_LENGTH)]
         public string? Name { get; set; }
-        public virtual List<MovieGenre> GenreMovies { get; set; } = new List<MovieGenre>();
+
     }
 }
