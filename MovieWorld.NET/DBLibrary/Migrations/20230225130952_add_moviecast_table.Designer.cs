@@ -4,6 +4,7 @@ using DBLibrary;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DBLibrary.Migrations
 {
     [DbContext(typeof(MovieWorldDbContext))]
-    partial class MovieWorldDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230225130952_add_moviecast_table")]
+    partial class add_moviecast_table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -186,17 +189,12 @@ namespace DBLibrary.Migrations
                     b.Property<int>("CastId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CastTypeId")
-                        .HasColumnType("int");
-
                     b.Property<int>("MovieId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CastId");
-
-                    b.HasIndex("CastTypeId");
 
                     b.HasIndex("MovieId", "CastId")
                         .IsUnique();
@@ -245,10 +243,6 @@ namespace DBLibrary.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Model.Models.CastType", "CastType")
-                        .WithMany()
-                        .HasForeignKey("CastTypeId");
-
                     b.HasOne("Model.Models.Movie", "Movie")
                         .WithMany("MovieCasts")
                         .HasForeignKey("MovieId")
@@ -256,8 +250,6 @@ namespace DBLibrary.Migrations
                         .IsRequired();
 
                     b.Navigation("Cast");
-
-                    b.Navigation("CastType");
 
                     b.Navigation("Movie");
                 });

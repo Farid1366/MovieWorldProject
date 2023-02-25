@@ -23,5 +23,6 @@ namespace Model.Models
         [Required]
         public decimal? IMDB_Rate { get; set; }
         public virtual List<MovieGenre> MovieGenres { get; set; } = new List<MovieGenre>();
+        public virtual List<MovieCast> MovieCasts { get; set; } = new List<MovieCast>();
     }
 }

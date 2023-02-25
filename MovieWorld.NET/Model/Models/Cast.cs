@@ -19,5 +19,6 @@ namespace Model.Models
         public decimal? Height { get; set; }
         public int? GenderId { get; set; }
         public virtual Gender? Gender { get; set; }
+        public virtual List<MovieCast> CastMovies { get; set; } = new List<MovieCast>();
     }
 }
