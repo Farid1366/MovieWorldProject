@@ -1,0 +1,12 @@
+D:\Repositories\MovieWorldProject\MovieWorld.NET\Model\bin\Debug\net7.0\Model.deps.json
+D:\Repositories\MovieWorldProject\MovieWorld.NET\Model\bin\Debug\net7.0\Model.dll
+D:\Repositories\MovieWorldProject\MovieWorld.NET\Model\bin\Debug\net7.0\Model.pdb
+D:\Repositories\MovieWorldProject\MovieWorld.NET\Model\obj\Debug\net7.0\Model.csproj.AssemblyReference.cache
+D:\Repositories\MovieWorldProject\MovieWorld.NET\Model\obj\Debug\net7.0\Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositories\MovieWorldProject\MovieWorld.NET\Model\obj\Debug\net7.0\Model.AssemblyInfoInputs.cache
+D:\Repositories\MovieWorldProject\MovieWorld.NET\Model\obj\Debug\net7.0\Model.AssemblyInfo.cs
+D:\Repositories\MovieWorldProject\MovieWorld.NET\Model\obj\Debug\net7.0\Model.csproj.CoreCompileInputs.cache
+D:\Repositories\MovieWorldProject\MovieWorld.NET\Model\obj\Debug\net7.0\Model.dll
+D:\Repositories\MovieWorldProject\MovieWorld.NET\Model\obj\Debug\net7.0\refint\Model.dll
+D:\Repositories\MovieWorldProject\MovieWorld.NET\Model\obj\Debug\net7.0\Model.pdb
+D:\Repositories\MovieWorldProject\MovieWorld.NET\Model\obj\Debug\net7.0\ref\Model.dll
