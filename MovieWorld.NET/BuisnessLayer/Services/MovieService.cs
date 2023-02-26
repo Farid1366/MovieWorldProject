@@ -12,9 +12,9 @@ namespace BuisnessLayer.Services
     {
         private readonly IMovieRepo _dbRepo;
         private readonly IMapper _mapper;
-        public MovieService(MovieWorldDbContext dbCOntext,IMapper mapper) 
+        public MovieService(MovieWorldDbContext dbContext,IMapper mapper) 
         {
-            _dbRepo = new MovieRepo(context: dbCOntext);
+            _dbRepo = new MovieRepo(context: dbContext);
             _mapper = mapper;
         }
         public MovieDto GetMovie(int id)

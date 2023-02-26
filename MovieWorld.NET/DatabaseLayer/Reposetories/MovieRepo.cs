@@ -1,5 +1,6 @@
 ﻿using DatabaseLayer.Interfaces;
 using DBLibrary;
+using Microsoft.EntityFrameworkCore;
 using Model.Models;
 using System.Transactions;
 
@@ -15,6 +16,7 @@ namespace DatabaseLayer.Reposetories
         public Movie GetMovie(int id)
         {
             var movie = _context.Movie
+                .AsNoTracking()
                 .AsEnumerable()
                 .Where(x => x.Id == id)
                 .FirstOrDefault();
@@ -23,6 +25,7 @@ namespace DatabaseLayer.Reposetories
         public List<Movie> GetMovies()
         {
             return _context.Movie
+                .AsNoTracking()
                 .AsEnumerable()
                 .OrderBy(x => x.Name)
                 .ToList();
