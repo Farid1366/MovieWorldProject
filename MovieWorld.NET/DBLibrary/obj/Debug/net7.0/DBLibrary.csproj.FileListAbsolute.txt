@@ -15,3 +15,4 @@ D:\Repositories\MovieWorldProject\MovieWorld.NET\DBLibrary\obj\Debug\net7.0\refi
 D:\Repositories\MovieWorldProject\MovieWorld.NET\DBLibrary\obj\Debug\net7.0\DBLibrary.pdb
 D:\Repositories\MovieWorldProject\MovieWorld.NET\DBLibrary\obj\Debug\net7.0\DBLibrary.genruntimeconfig.cache
 D:\Repositories\MovieWorldProject\MovieWorld.NET\DBLibrary\obj\Debug\net7.0\ref\DBLibrary.dll
+D:\Repositories\MovieWorldProject\MovieWorld.NET\DBLibrary\bin\Debug\net7.0\appsettings.json

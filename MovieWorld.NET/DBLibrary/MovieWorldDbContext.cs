@@ -12,6 +12,14 @@ namespace DBLibrary
         public DbSet<Cast> Cast { get; set; }
         public DbSet<CastType> CastType { get; set; }
         public DbSet<Gender> Gender { get; set; }
+        public MovieWorldDbContext()
+        {
+
+        }
+        public MovieWorldDbContext(DbContextOptions options) : base(options)
+        {
+
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
