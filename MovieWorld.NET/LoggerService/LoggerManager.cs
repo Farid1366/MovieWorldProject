@@ -1,4 +1,4 @@
-﻿using Contracts;
+﻿using BuisnessLayer.Interfaces;
 using NLog;
 
 namespace LoggerService

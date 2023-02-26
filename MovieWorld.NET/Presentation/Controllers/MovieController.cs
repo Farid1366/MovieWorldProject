@@ -1,12 +1,6 @@
-﻿using AutoMapper;
-using BuisnessLayer.Interfaces;
+﻿using BuisnessLayer.Interfaces;
 using BuisnessLayer.Services;
-using DBLibrary;
-using Helper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Presentation.Controllers
 {
