@@ -1,4 +1,4 @@
-﻿using Contracts;
+﻿using BuisnessLayer.Interfaces;
 using LoggerService;
 
 namespace WebApi.Extensions
