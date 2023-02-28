@@ -3,6 +3,7 @@ using BuisnessLayer.Interfaces;
 using DatabaseLayer.Interfaces;
 using DatabaseLayer.Reposetories;
 using DBLibrary;
+using Entities.Dtos.CreationDtos;
 using Entities.Models.Exceptions;
 using Model.DTOs;
 using Model.Models;
@@ -32,11 +33,12 @@ namespace BuisnessLayer.Services
             var movies = _dbRepo.GetMovies();
             return _mapper.Map<List<MovieDto>>(movies);
         }
-        public int InsertMovie(MovieDto movie)
+        public MovieDto InsertMovie(MovieForCreationDto movie)
         {
-            return _dbRepo.InsertMovie(_mapper.Map<Movie>(movie));
+            var newItem = _dbRepo.InsertMovie(_mapper.Map<Movie>(movie));
+            return _mapper.Map<MovieDto>(newItem);
         }
-        public void InsertMovies(List<MovieDto> movies)
+        public void InsertMovies(List<MovieForCreationDto> movies)
         {
             try
             {

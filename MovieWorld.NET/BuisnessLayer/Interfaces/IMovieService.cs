@@ -1,4 +1,5 @@
-﻿using Model.DTOs;
+﻿using Entities.Dtos.CreationDtos;
+using Model.DTOs;
 
 namespace BuisnessLayer.Interfaces
 {
@@ -6,8 +7,8 @@ namespace BuisnessLayer.Interfaces
     {
         MovieDto GetMovie(int id);
         List<MovieDto> GetMovies();
-        int InsertMovie(MovieDto movie);
-        void InsertMovies(List<MovieDto> movies);
+        MovieDto InsertMovie(MovieForCreationDto movie);
+        void InsertMovies(List<MovieForCreationDto> movies);
         int UpdateMovie(MovieDto movie);
         void UpdateMovies(List<MovieDto> movies);
         void DeleteMovie(int id);

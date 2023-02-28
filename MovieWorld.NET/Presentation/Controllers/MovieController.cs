@@ -1,4 +1,5 @@
 ﻿using BuisnessLayer.Interfaces;
+using Entities.Dtos.CreationDtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers
@@ -20,7 +21,7 @@ namespace Presentation.Controllers
             var movies = _movieService.GetMovies();
             return Ok(movies);
         }
-        [HttpGet("{id:int}")]
+        [HttpGet("{id:int}", Name = "MovieById")]
         public IActionResult GetMovie(int id)
         {
             var movie = _movieService.GetMovie(id);
@@ -31,6 +32,14 @@ namespace Presentation.Controllers
         {
             var cast = _castService.GetCasts(movieId);
             return Ok(cast);
+        }
+        [HttpPost]
+        public IActionResult CreateMovie([FromBody] MovieForCreationDto movie)
+        {
+            if (movie is null)
+                return BadRequest("MovieForCreationDto object is null");
+            var createdMovie = _movieService.InsertMovie(movie);
+            return CreatedAtRoute("MovieById", new { id = createdMovie.Id } , createdMovie);
         }
     }
 }

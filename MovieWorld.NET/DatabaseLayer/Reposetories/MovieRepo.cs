@@ -30,7 +30,7 @@ namespace DatabaseLayer.Reposetories
                 .OrderBy(x => x.Name)
                 .ToList();
         }
-        public int InsertMovie(Movie movie)
+        public Movie InsertMovie(Movie movie)
         {
             _context.Movie.Add(movie);
             _context.SaveChanges();
@@ -38,7 +38,7 @@ namespace DatabaseLayer.Reposetories
                 .FirstOrDefault(x => x.Name.ToLower()
                 .Equals(movie.Name?.ToLower()));
             if (newItem == null) throw new Exception("Could not create the movie as expected");
-            return newItem.Id;
+            return newItem;
         }
         public void InsertMovies(List<Movie> movies)
         {
@@ -48,7 +48,7 @@ namespace DatabaseLayer.Reposetories
                 {
                     foreach (var movie in movies)
                     {
-                        var success = InsertMovie(movie) > 0;
+                        var success = InsertMovie(movie).Id > 0;
                         if (!success) throw new Exception($"Error inserting the movie {movie.Name}");
                     }
                     scope.Complete();
