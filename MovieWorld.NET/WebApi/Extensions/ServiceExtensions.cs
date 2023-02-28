@@ -1,5 +1,7 @@
 ﻿using BuisnessLayer.Interfaces;
+using DBLibrary;
 using LoggerService;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApi.Extensions
 {
@@ -26,5 +28,10 @@ namespace WebApi.Extensions
         /* Logger Serivce initialization */
         public static void ConfigureLoggerService(this IServiceCollection services) =>
             services.AddSingleton<ILoggerManager,LoggerManager>();
+
+        /* DBContext */
+        public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
+            services.AddDbContext<MovieWorldDbContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("MovieWorld")));
     }
 }

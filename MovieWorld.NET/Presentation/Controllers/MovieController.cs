@@ -1,5 +1,4 @@
 ﻿using BuisnessLayer.Interfaces;
-using BuisnessLayer.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers
@@ -9,22 +8,29 @@ namespace Presentation.Controllers
     public class MovieController : ControllerBase
     {
         private static IMovieService _movieService;
+        private static ICastService _castService;
+        public MovieController(IMovieService movieService,ICastService castService)
+        {
+            _movieService = movieService;
+            _castService = castService;
+        }
         [HttpGet]
         public IActionResult GetMovies()
         {
-            try
-            {
-                using (var db = DBBuilder.GetDbContext())
-                {
-                    _movieService = new MovieService(dbContext: db, mapper: DBBuilder.GetMapper());
-                    var movies = _movieService.GetMovies();
-                    return Ok(movies);
-                }
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "Internal server error");
-            }
+            var movies = _movieService.GetMovies();
+            return Ok(movies);
+        }
+        [HttpGet("{id:int}")]
+        public IActionResult GetMovie(int id)
+        {
+            var movie = _movieService.GetMovie(id);
+            return Ok(movie);
+        }
+        [HttpGet("{movieId:int}/casts")]
+        public IActionResult GetCastsForMovie(int movieId)
+        {
+            var cast = _castService.GetCasts(movieId);
+            return Ok(cast);
         }
     }
 }

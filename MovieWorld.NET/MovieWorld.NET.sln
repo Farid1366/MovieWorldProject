@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBLibrary", "DBLibrary\DBLibrary.csproj", "{9AB687D5-483E-4142-A5E0-20B9352F805A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{10748B67-7219-45CB-A160-E2213B64269B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Model\Entities.csproj", "{10748B67-7219-45CB-A160-E2213B64269B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helper", "Helper\Helper.csproj", "{5E6132D8-A286-4214-A0FE-0AC7C8E005B7}"
 EndProject
@@ -21,9 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseLayer", "DatabaseLa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuisnessLayer", "BuisnessLayer\BuisnessLayer.csproj", "{C930F1F8-D76A-4238-8350-B26033814B1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{84A71E3B-ACF8-46C8-983D-8BB5BF9B3B7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{84A71E3B-ACF8-46C8-983D-8BB5BF9B3B7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{9BE038A0-B859-48A5-9672-B49D71BCF75B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "Presentation\Presentation.csproj", "{9BE038A0-B859-48A5-9672-B49D71BCF75B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

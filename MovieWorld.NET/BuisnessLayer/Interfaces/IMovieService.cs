@@ -1,5 +1,4 @@
 ﻿using Model.DTOs;
-using Model.Models;
 
 namespace BuisnessLayer.Interfaces
 {

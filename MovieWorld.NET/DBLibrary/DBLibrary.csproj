@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj" />
+    <ProjectReference Include="..\Model\Entities.csproj" />
   </ItemGroup>
 
 </Project>
