@@ -16,9 +16,9 @@ namespace Presentation.Controllers
             _castService = castService;
         }
         [HttpGet]
-        public IActionResult GetMovies()
+        public async Task<IActionResult> GetMovies()
         {
-            var movies = _movieService.GetMovies();
+            var movies = await _movieService.GetMoviesAsync();
             return Ok(movies);
         }
         [HttpGet("{id:int}", Name = "MovieById")]

@@ -7,6 +7,7 @@ namespace BuisnessLayer.Interfaces
     {
         MovieDto GetMovie(int id);
         List<MovieDto> GetMovies();
+        Task<List<MovieDto>> GetMoviesAsync();
         MovieDto InsertMovie(MovieForCreationDto movie);
         void InsertMovies(List<MovieForCreationDto> movies);
         int UpdateMovie(MovieForUpdateDto movie);

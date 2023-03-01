@@ -24,11 +24,20 @@ namespace DatabaseLayer.Reposetories
         }
         public List<Movie> GetMovies()
         {
-            return _context.Movie
+            var movies = _context.Movie
                 .AsNoTracking()
                 .AsEnumerable()
                 .OrderBy(x => x.Name)
                 .ToList();
+            return movies;
+        }
+        public async Task<List<Movie>> GetMoviesAsync()
+        {
+            var movies = await _context.Movie
+                .AsNoTracking()
+                .OrderBy(x => x.Name)
+                .ToListAsync();
+            return movies;
         }
         public Movie InsertMovie(Movie movie)
         {

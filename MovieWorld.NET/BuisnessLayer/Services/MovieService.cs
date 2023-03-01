@@ -33,6 +33,11 @@ namespace BuisnessLayer.Services
             var movies = _dbRepo.GetMovies();
             return _mapper.Map<List<MovieDto>>(movies);
         }
+        public async Task<List<MovieDto>> GetMoviesAsync()
+        {
+            var movies = await _dbRepo.GetMoviesAsync();
+            return _mapper.Map<List<MovieDto>>(movies);
+        }
         public MovieDto InsertMovie(MovieForCreationDto movie)
         {
             var newItem = _dbRepo.InsertMovie(_mapper.Map<Movie>(movie));

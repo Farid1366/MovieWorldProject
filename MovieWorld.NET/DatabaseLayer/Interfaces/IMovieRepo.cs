@@ -6,6 +6,7 @@ namespace DatabaseLayer.Interfaces
     {
         Movie GetMovie(int id);
         List<Movie> GetMovies();
+        Task<List<Movie>> GetMoviesAsync();
         Movie InsertMovie(Movie movie);
         void InsertMovies(List<Movie> movies);
         int UpdateMovie(Movie movie);
