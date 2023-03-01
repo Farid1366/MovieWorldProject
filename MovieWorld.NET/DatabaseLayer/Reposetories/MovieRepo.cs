@@ -97,6 +97,7 @@ namespace DatabaseLayer.Reposetories
         {
             var movie = _context.Movie.FirstOrDefault(x => x.Id == id);
             if (movie == null) return;
+            _context.Movie.Remove(movie);
             _context.SaveChanges();
         }
         public void DeleteMovies(List<int> movieIds)

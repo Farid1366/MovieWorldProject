@@ -10,7 +10,7 @@ namespace Presentation.Controllers
     {
         private static IMovieService _movieService;
         private static ICastService _castService;
-        public MovieController(IMovieService movieService,ICastService castService)
+        public MovieController(IMovieService movieService, ICastService castService)
         {
             _movieService = movieService;
             _castService = castService;
@@ -38,8 +38,27 @@ namespace Presentation.Controllers
         {
             if (movie is null)
                 return BadRequest("MovieForCreationDto object is null");
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
             var createdMovie = _movieService.InsertMovie(movie);
-            return CreatedAtRoute("MovieById", new { id = createdMovie.Id } , createdMovie);
+            return CreatedAtRoute("MovieById", new { id = createdMovie.Id }, createdMovie);
+        }
+        [HttpDelete("{id:int}")]
+        public IActionResult DeleteMovie(int id)
+        {
+            _movieService.DeleteMovie(id);
+            return NoContent();
+        }
+        [HttpPut("{id:int}")]
+        public IActionResult UpdateMovie(int id,[FromBody] MovieForUpdateDto movie)
+        {
+            if (movie is null)
+                return BadRequest("MovieForUpdateDto object is null");
+            if(!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+            movie.Id = id;
+            _movieService.UpdateMovie(movie: movie);
+            return NoContent();
         }
     }
 }

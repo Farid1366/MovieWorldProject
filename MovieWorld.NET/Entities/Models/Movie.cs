@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore;
 using Model.Abstracts;
 using Model.Constants;
 using System.ComponentModel.DataAnnotations;
@@ -6,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Models
 {
+    [Index(nameof(Name), IsUnique = true)]
     public class Movie : FullAuditModel
     {
         [StringLength(ModelConstants.MAX_NAME_LENGTH)]

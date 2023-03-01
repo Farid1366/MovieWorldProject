@@ -15,6 +15,7 @@ namespace Presentation
         {
             CreateMap<Movie, MovieDto>();
             CreateMap<MovieForCreationDto, Movie>();
+            CreateMap<MovieForUpdateDto, Movie>();
             CreateMap<Cast, CastDto>();
         }
     }

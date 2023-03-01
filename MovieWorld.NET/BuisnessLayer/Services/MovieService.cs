@@ -49,12 +49,15 @@ namespace BuisnessLayer.Services
                 Console.WriteLine($"The transaction has failed: {ex.Message}");
             }
         }
-        public int UpdateMovie(MovieDto movie)
+        public int UpdateMovie(MovieForUpdateDto movie)
         {
-            if (movie.Id < 0) throw new ArgumentException("Please set the movie id before update");
+            if (movie.Id < 0)
+            {
+                throw new ArgumentException("Please set the movie id before update");
+            }
             return _dbRepo.UpdateMovie(_mapper.Map<Movie>(movie));
         }
-        public void UpdateMovies(List<MovieDto> movies)
+        public void UpdateMovies(List<MovieForUpdateDto> movies)
         {
             try
             {
@@ -67,9 +70,10 @@ namespace BuisnessLayer.Services
         }
         public void DeleteMovie(int id)
         {
-            if (id <= 0)
+            var movie = _dbRepo.GetMovie(id);
+            if (movie is null)
             {
-                throw new ArgumentException("Please set a valid item id before deleting");
+                throw new MovieNotFoundException(id);
             }
             _dbRepo.DeleteMovie(id);
         }
