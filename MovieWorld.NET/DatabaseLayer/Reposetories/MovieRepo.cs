@@ -31,11 +31,13 @@ namespace DatabaseLayer.Reposetories
                 .ToList();
             return movies;
         }
-        public async Task<List<Movie>> GetMoviesAsync()
+        public async Task<List<Movie>> GetMoviesAsync(int pageNumber, int pageSize)
         {
             var movies = await _context.Movie
                 .AsNoTracking()
                 .OrderBy(x => x.Name)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
             return movies;
         }

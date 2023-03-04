@@ -1,4 +1,5 @@
 ﻿using Entities.Dtos.CreationDtos;
+using Entities.Dtos.UpdateDtos;
 using Model.DTOs;
 
 namespace BuisnessLayer.Interfaces
@@ -7,7 +8,7 @@ namespace BuisnessLayer.Interfaces
     {
         MovieDto GetMovie(int id);
         List<MovieDto> GetMovies();
-        Task<List<MovieDto>> GetMoviesAsync();
+        Task<List<MovieDto>> GetMoviesAsync(int pageNumber,int pageSize);
         MovieDto InsertMovie(MovieForCreationDto movie);
         void InsertMovies(List<MovieForCreationDto> movies);
         int UpdateMovie(MovieForUpdateDto movie);

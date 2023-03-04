@@ -1,6 +1,7 @@
 ﻿using BuisnessLayer.Interfaces;
 using DBLibrary;
 using LoggerService;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebApi.Extensions
@@ -33,5 +34,16 @@ namespace WebApi.Extensions
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<MovieWorldDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("MovieWorld")));
+
+        /**/
+        public static void ConfigureVersioning(this IServiceCollection services) 
+        { 
+            services.AddApiVersioning(options => 
+            {
+                options.ReportApiVersions = true; 
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.DefaultApiVersion = new ApiVersion(1, 0); 
+            }); 
+        }
     }
 }

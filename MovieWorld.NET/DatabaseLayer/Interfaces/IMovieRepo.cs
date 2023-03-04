@@ -1,4 +1,5 @@
 ﻿using Model.Models;
+using Presentation.RequestFeatures;
 
 namespace DatabaseLayer.Interfaces
 {
@@ -6,7 +7,7 @@ namespace DatabaseLayer.Interfaces
     {
         Movie GetMovie(int id);
         List<Movie> GetMovies();
-        Task<List<Movie>> GetMoviesAsync();
+        Task<List<Movie>> GetMoviesAsync(int pageNumber, int pageSize);
         Movie InsertMovie(Movie movie);
         void InsertMovies(List<Movie> movies);
         int UpdateMovie(Movie movie);

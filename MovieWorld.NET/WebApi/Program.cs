@@ -4,6 +4,7 @@ using BuisnessLayer.Interfaces;
 using BuisnessLayer.Services;
 using Presentation;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.ActionFilters;
 
 var builder = WebApplication.CreateBuilder(args);
 LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
@@ -17,6 +18,8 @@ builder.Services.AddTransient<ICastService, CastService>();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.AddAutoMapper(typeof(MovieWorldMapper));
 builder.Services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
+builder.Services.AddScoped<ValidationFilterAttribute>();
+builder.Services.ConfigureVersioning();
 builder.Services.AddControllers(config => {
     config.RespectBrowserAcceptHeader = true;
     config.ReturnHttpNotAcceptable = true;

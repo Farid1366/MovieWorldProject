@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Entities.Dtos.CreationDtos
+namespace Entities.Dtos.UpdateDtos
 {
     public record MovieForUpdateDto
     {

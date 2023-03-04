@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Entities.Dtos.CreationDtos;
+using Entities.Dtos.UpdateDtos;
 using Model.DTOs;
 using Model.Models;
 

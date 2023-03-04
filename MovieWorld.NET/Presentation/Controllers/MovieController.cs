@@ -1,9 +1,14 @@
 ﻿using BuisnessLayer.Interfaces;
 using Entities.Dtos.CreationDtos;
+using Entities.Dtos.UpdateDtos;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.ActionFilters;
+using Presentation.RequestFeatures;
+using System.Text.Json;
 
 namespace Presentation.Controllers
 {
+    [ApiVersion("1.0")]
     [Route("api/movies")]
     [ApiController]
     public class MovieController : ControllerBase
@@ -16,10 +21,10 @@ namespace Presentation.Controllers
             _castService = castService;
         }
         [HttpGet]
-        public async Task<IActionResult> GetMovies()
+        public async Task<IActionResult> GetMovies([FromQuery] MovieParameters movieParamaeters)
         {
-            var movies = await _movieService.GetMoviesAsync();
-            return Ok(movies);
+            var pagedMovies = await _movieService.GetMoviesAsync(movieParamaeters.PageNumber, movieParamaeters.PageSize);
+            return Ok(pagedMovies);
         }
         [HttpGet("{id:int}", Name = "MovieById")]
         public IActionResult GetMovie(int id)
@@ -34,12 +39,9 @@ namespace Presentation.Controllers
             return Ok(cast);
         }
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public IActionResult CreateMovie([FromBody] MovieForCreationDto movie)
         {
-            if (movie is null)
-                return BadRequest("MovieForCreationDto object is null");
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState);
             var createdMovie = _movieService.InsertMovie(movie);
             return CreatedAtRoute("MovieById", new { id = createdMovie.Id }, createdMovie);
         }
@@ -50,12 +52,9 @@ namespace Presentation.Controllers
             return NoContent();
         }
         [HttpPut("{id:int}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public IActionResult UpdateMovie(int id,[FromBody] MovieForUpdateDto movie)
         {
-            if (movie is null)
-                return BadRequest("MovieForUpdateDto object is null");
-            if(!ModelState.IsValid)
-                return UnprocessableEntity(ModelState);
             movie.Id = id;
             _movieService.UpdateMovie(movie: movie);
             return NoContent();
