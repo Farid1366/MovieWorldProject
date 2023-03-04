@@ -26,7 +26,7 @@ namespace DBLibrary
             {
                 var builder = new ConfigurationBuilder()
                     .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+                    .AddJsonFile("appsettings2.json", optional: true, reloadOnChange: true);
 
                 _configuration = builder.Build();
                 var cnstr = _configuration.GetConnectionString("MovieWorld");

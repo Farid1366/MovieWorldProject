@@ -20,6 +20,7 @@ builder.Services.AddAutoMapper(typeof(MovieWorldMapper));
 builder.Services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
 builder.Services.AddScoped<ValidationFilterAttribute>();
 builder.Services.ConfigureVersioning();
+builder.Services.ConfigureSwagger();
 builder.Services.AddControllers(config => {
     config.RespectBrowserAcceptHeader = true;
     config.ReturnHttpNotAcceptable = true;
@@ -42,5 +43,10 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 });
 app.UseAuthorization();
 app.MapControllers();
+app.UseSwagger(); 
+app.UseSwaggerUI(s => 
+{ 
+    s.SwaggerEndpoint("/swagger/v1/swagger.json", "Movie World API v1"); 
+});
 
 app.Run();
