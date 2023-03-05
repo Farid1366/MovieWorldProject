@@ -5,6 +5,7 @@ using BuisnessLayer.Services;
 using Presentation;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.ActionFilters;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
@@ -15,10 +16,14 @@ builder.Services.ConfigureIISIntegration();
 builder.Services.ConfigureLoggerService();
 builder.Services.AddTransient<IMovieService, MovieService>();
 builder.Services.AddTransient<ICastService, CastService>();
+builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
 builder.Services.ConfigureSqlContext(builder.Configuration);
-builder.Services.AddAutoMapper(typeof(MovieWorldMapper));
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
 builder.Services.AddScoped<ValidationFilterAttribute>();
+builder.Services.AddAuthentication();
+builder.Services.ConfigureIdentity();
+builder.Services.ConfigureJWT(builder.Configuration);
 builder.Services.ConfigureVersioning();
 builder.Services.ConfigureSwagger();
 builder.Services.AddControllers(config => {
@@ -41,6 +46,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 { 
     ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.All
 });
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.UseSwagger(); 

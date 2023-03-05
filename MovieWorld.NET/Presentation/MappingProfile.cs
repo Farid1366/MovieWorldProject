@@ -1,14 +1,15 @@
 ﻿using AutoMapper;
 using Entities.Dtos.CreationDtos;
 using Entities.Dtos.UpdateDtos;
+using Entities.Models;
 using Model.DTOs;
 using Model.Models;
 
 namespace Presentation
 {
-    public class MovieWorldMapper : Profile
+    public class MappingProfile : Profile
     {
-        public MovieWorldMapper() 
+        public MappingProfile() 
         {
             CreateMaps();
         }
@@ -18,6 +19,7 @@ namespace Presentation
             CreateMap<MovieForCreationDto, Movie>();
             CreateMap<MovieForUpdateDto, Movie>();
             CreateMap<Cast, CastDto>();
+            CreateMap<UserForRegistrationDto, User>();
         }
     }
 }

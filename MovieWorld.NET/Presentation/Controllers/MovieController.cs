@@ -1,10 +1,10 @@
 ﻿using BuisnessLayer.Interfaces;
 using Entities.Dtos.CreationDtos;
 using Entities.Dtos.UpdateDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.ActionFilters;
 using Presentation.RequestFeatures;
-using System.Text.Json;
 
 namespace Presentation.Controllers
 {
@@ -21,6 +21,7 @@ namespace Presentation.Controllers
             _castService = castService;
         }
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetMovies([FromQuery] MovieParameters movieParamaeters)
         {
             var pagedMovies = await _movieService.GetMoviesAsync(movieParamaeters.PageNumber, movieParamaeters.PageSize);

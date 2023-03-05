@@ -1,17 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entities.Configuration;
+using Entities.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Model.Abstracts;
 using Model.Models;
 
 namespace DBLibrary
 {
-    public class MovieWorldDbContext : DbContext
+    public class MovieWorldDbContext : IdentityDbContext
     {
         private static IConfigurationRoot? _configuration = null;
         public DbSet<Movie> Movie { get; set; }
         public DbSet<Cast> Cast { get; set; }
         public DbSet<CastType> CastType { get; set; }
         public DbSet<Gender> Gender { get; set; }
+        public DbSet<User> User { get; set; }
         public MovieWorldDbContext()
         {
 
@@ -19,6 +23,11 @@ namespace DBLibrary
         public MovieWorldDbContext(DbContextOptions options) : base(options)
         {
 
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder) 
+        { 
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
