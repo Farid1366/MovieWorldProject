@@ -29,7 +29,7 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.DockerCompose", "5.DockerCompose", "{B953A3BD-0855-4519-A87C-AC717B7570B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieWorldUnitTests", "..\MovieWorldUnitTests\MovieWorldUnitTests.csproj", "{53132106-B3E9-4C89-898F-1023F074743A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieWorldUnitTests", "MovieWorldUnitTests\MovieWorldUnitTests.csproj", "{53132106-B3E9-4C89-898F-1023F074743A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
