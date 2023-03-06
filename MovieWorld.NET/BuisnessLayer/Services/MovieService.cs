@@ -21,6 +21,11 @@ namespace BuisnessLayer.Services
             _dbRepo = new MovieRepo(context: dbContext);
             _mapper = mapper;
         }
+        public MovieService(IMovieRepo dbRepo,IMapper mapper) 
+        {
+            _dbRepo = dbRepo;
+            _mapper = mapper;
+        }
         private Movie GetCompanyAndCheckIfItExists(int id)
         {
             var movie = _dbRepo.GetMovie(id);

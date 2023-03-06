@@ -5,7 +5,7 @@ using Entities.Models;
 using Model.DTOs;
 using Model.Models;
 
-namespace Presentation
+namespace MovieWorldUnitTests
 {
     public class MappingProfile : Profile
     {
